@@ -1,10 +1,8 @@
- # From pints
+# Taken from https://github.com/pints-team/pints
 
 import argparse
 import os
 import sys
-import re
-import subprocess
 import unittest
 
 

@@ -1,2 +1,2 @@
 
-from .time_series import *
+from .time_series import *  # noqa
