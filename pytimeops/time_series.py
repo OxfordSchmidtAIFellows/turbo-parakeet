@@ -1,5 +1,5 @@
-class  Timeseries:
-    def __init__(self,t,v,md):
+class Timeseries:
+    def __init__(self, t, v, md):
         """
         Parameters
         ----------
@@ -11,12 +11,12 @@ class  Timeseries:
             Values of each sample (in this case [GRN1,GRN2,GRN3])
 
         metadata (md): dictionary
-            Other attributes of the dataset which can be numerical or non-numerical
-            (in this case: sensillum (non-numerical), sugar(non-numerical), Concentration (numerical))   
+            Other attributes of the dataset which
+            can be numerical or non-numerical
+            (in this case: sensillum (non-numerical),
+            sugar(non-numerical), Concentration (numerical))
 
         """
         self.time_index = t
         self.values = v
         self.metadata = md
-
-
