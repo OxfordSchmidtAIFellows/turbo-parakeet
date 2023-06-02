@@ -10,7 +10,7 @@ class TestTimeSeries(unittest.TestCase):
         t = [1, 2, 3]
         v = [10, 100, 105]
         md = ["s1", "fruc", "0mM", "GRN1"]
-        ts = pto.timeseries(t, v, md)
+        ts = pto.Timeseries(t, v, md)
 
         self.assertEqual(t, ts.time_index)
         self.assertEqual(v, ts.values)
