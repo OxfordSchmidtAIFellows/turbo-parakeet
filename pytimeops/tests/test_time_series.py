@@ -9,7 +9,7 @@ class TestTimeSeries(unittest.TestCase):
     def test_init(self):
         t = [1, 2, 3]
         v = [10, 100, 105]
-        md = {"sensillum": "s1", "sugar": "fruc", "concentration": "0mM", "GRN": "GRN1"}
+        md = {"sensillum": "s1", "sugar": "fruc", "GRN": "GRN1"}
         ts = pto.Timeseries(t, v, md)
 
         self.assertEqual(t, ts.time_index)
