@@ -1,5 +1,6 @@
 [![Style tests (flake8)](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/style-test.yml/badge.svg)](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/style-test.yml)
 [![Unit tests](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/unit-tests.yml)
+[![Documentation Status](https://readthedocs.org/projects/turbo-parakeet/badge/?version=latest)](https://turbo-parakeet.readthedocs.io/en/latest/?badge=latest)
 
 # turbo-parakeet
 Find the main documentation here: https://turbo-parakeet.readthedocs.io/en/latest/
