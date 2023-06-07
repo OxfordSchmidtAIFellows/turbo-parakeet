@@ -5,7 +5,7 @@ import pytimeops as pto
 class TestReadData(unittest.TestCase):
     def test_read_file(self):
         '# Test data'
-        test_data = 'test_data.csv'
+        test_data = 'Data/test_data.csv'
         num_md = 4
         num_b = 10
         '# Call the function being tested'

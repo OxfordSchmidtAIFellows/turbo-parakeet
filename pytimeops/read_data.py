@@ -14,7 +14,7 @@ def read_file(filename, Num_md, Num_b):
     return list_y
 
 
-list_1 = read_file('Fig1H-K_SI1G-I.csv', 4, 10)
+list_1 = read_file('Data/Fig1H-K_SI1G-I.csv', 4, 10)
 
 '#print([ts.metadata for ts in list_1])'
 '#print([ts.values for ts in list_1])'
