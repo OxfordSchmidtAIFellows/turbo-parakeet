@@ -1,5 +1,5 @@
 The data attached is associated with Figure 1H-K from the 2022 iScience paper. It contains 1s of data (in 100ms bins = 10 bins/response). Data are as follows:
-	Col 1 = BeeID - animal identifier;
+	Col1 = BeeID - animal identifier;
 	Col2 = sensillum – we recorded from up to 6 sensilla (i.e., “taste buds”) per animal. “s1” has the same physical location on each animal.
 	Col3 = sugar – this is the stimulus type
 	Col4 = concentration – the concentration of the sugar used, where “0mM” is water.
