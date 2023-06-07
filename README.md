@@ -1,3 +1,6 @@
+[![Style tests (flake8)](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/style-test.yml/badge.svg)](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/style-test.yml)
+[![Unit tests](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/OxfordSchmidtAIFellows/turbo-parakeet/actions/workflows/unit-tests.yml)
+
 # turbo-parakeet
 Find the main documentation here: https://turbo-parakeet.readthedocs.io/en/latest/
 
