@@ -1,5 +1,5 @@
 import pandas as pd
-import pytimeops
+import pytimeops as pto
 
 
 def read_file(filename, Num_md, Num_b):
@@ -10,7 +10,7 @@ def read_file(filename, Num_md, Num_b):
     for i, row in df.iterrows():
         V = row[Num_md+1:].values
         MD = dict(row[1:Num_md+1])
-        list_y.append(pytimeops.Timeseries(t, V, MD))
+        list_y.append(pto.Timeseries(t, V, MD))
     return list_y
 
 
