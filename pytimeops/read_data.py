@@ -3,6 +3,9 @@ import pytimeops as pto
 
 
 def read_file(filename, Num_md, Num_b):
+    """
+    This function gets the .csv file, and returns lists.
+    """
 
     df = pd.read_csv(filename)
     t = range(Num_b)
