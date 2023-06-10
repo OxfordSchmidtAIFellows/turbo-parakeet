@@ -3,18 +3,30 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to turbo-parakeet's documentation!
+.. _GitHub: https://github.com/OxfordSchmidtAIFellows/turbo-parakeet
+   
+Welcome to the turbo-parakeet documentation!
 ==========================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
+**turbo-parakeet** is hosted on GitHub_, where you can find **download** and
+**installation instructions**.
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+Contents
+========
+
+.. module::pytimeops
+
+.. toctree::
+
+   :maxdepth: 2
+   :caption: Contents:
+   TimeSeries
+   
+
+
+
+
