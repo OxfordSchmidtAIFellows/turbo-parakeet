@@ -22,8 +22,7 @@ Overview:
 
 Command line options for running *run.py*:
 
-.. argparse::
-   :module: pytimeops.run
-   :func: __main__
-   :prog: run
+
+.. autoprogram:: run:parser
+    :prog: run.py
 

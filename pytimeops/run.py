@@ -2,6 +2,12 @@ import pandas as pd
 import pytimeops as pto
 import sys
 
+# define command line arguments
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--verbose", help="Turn on verbose messages", action="store_true", default=False)
+parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in", default=None)
+ 
 def main(inputCSV, verbose=False):
     """
     This main function performs the workflow:
@@ -28,11 +34,6 @@ if __name__ == "__main__":
     example usage:
     $ python pytimeops/run.py -i Data/Fig1H-K_SI1G-I.csv -v
     """
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-v", "--verbose", help="Turn on verbose messages", action="store_true", default=False)
-    parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in", default=None)
- 
     args = parser.parse_args()
     verbose = args.verbose
     inputfile = args.inputCSV
