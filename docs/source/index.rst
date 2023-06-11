@@ -18,13 +18,13 @@ Welcome to the turbo-parakeet documentation!
 Contents
 ========
 
-.. module::pytimeops
+.. module:: pytimeops
 
 .. toctree::
 
    :maxdepth: 2
    :caption: Contents:
-   TimeSeries
+   time_series
    
 
 
