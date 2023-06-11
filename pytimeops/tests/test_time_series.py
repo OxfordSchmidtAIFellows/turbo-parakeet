@@ -8,7 +8,7 @@ class TestTimeSeries(unittest.TestCase):
         time_indices = [1, 2, 3]
         values = [10, 100, 105]
         metadata = {"sensillum": "s1", "sugar": "fruc", "GRN": "GRN1"}
-        ts = pto.Timeseries(t, v, md)
+        ts = pto.Timeseries(time_indices, values, metadata)
 
         self.assertEqual(time_indices, ts.time_indices)
         self.assertEqual(values, ts.values)
