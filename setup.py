@@ -14,4 +14,5 @@ setup(
             'flake8>=3',
         ],
     },
+    packages=find_packages(exclude=("Data")),
 )
