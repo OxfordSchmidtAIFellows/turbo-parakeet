@@ -29,9 +29,8 @@ html_static_path = ['_static']
 
 #sys.path.insert(0, os.path.dirname(os.getcwd()))
 import sys,os
-sys.path.insert(0, os.path.abspath('../'))
-sys.path.insert(1, os.path.abspath('../../'))
-sys.path.insert(2, os.path.abspath('../../pytimeops'))
-sys.path.insert(3, os.path.abspath('../../Data'))
+sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(1, os.path.abspath('../../pytimeops'))
+sys.path.insert(2, os.path.abspath('../../Data'))
 
 
