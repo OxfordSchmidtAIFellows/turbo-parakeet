@@ -15,10 +15,10 @@ def read_file(filename, Num_md, Num_b):
     """
 
     df = pd.read_csv(filename)
-    t = range(Num_b)
+    time_indices = range(Num_b)
     list_y = []
     for i, row in df.iterrows():
-        V = row[Num_md+1:].values
-        MD = dict(row[1:Num_md+1])
-        list_y.append(pto.Timeseries(t, V, MD))
+        values = row[Num_md+1:].values
+        metadata = dict(row[1:Num_md+1])
+        list_y.append(pto.Timeseries(time_indices, values, metadata))
     return list_y
