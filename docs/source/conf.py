@@ -29,11 +29,11 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 #sys.path.insert(0, os.path.dirname(os.getcwd()))
-#import sys,os
-#sys.path.insert(0, os.path.abspath('../../'))
-#sys.path.insert(1, os.path.abspath('../../pytimeops'))
-#sys.path.insert(2, os.path.abspath('../../Data'))
+import sys,os
+sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(1, os.path.abspath('../../Data'))
+sys.path.insert(2, os.path.abspath('../../pytimeops'))
 
-import pathlib
-import sys
-sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
+#import pathlib
+#import sys
+#sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
