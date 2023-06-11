@@ -14,12 +14,13 @@ release = '0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc','sphinx.ext.viewcode','sphinx.ext.napoleon','sphinx.etx.coverage']
+extensions = ['sphinx.ext.autodoc','sphinx.ext.viewcode','sphinx.ext.napoleon','sphinx.ext.coverage']
 
 templates_path = ['_templates']
 exclude_patterns = []
 
-
+# Configuration of sphinx.ext.coverage
+coverage_show_missing_items = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
