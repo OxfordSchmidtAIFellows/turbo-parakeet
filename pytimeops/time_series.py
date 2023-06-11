@@ -20,3 +20,4 @@ class Timeseries:
         self.time_index = t
         self.values = v
         self.metadata = md
+
