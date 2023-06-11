@@ -14,9 +14,10 @@ class Timeseries:
 
         time_indices (list(int)): time samples (in this case bins)
 
-        values (list(list(int))): Values of each sample at each time (in this case [GRN1,GRN2,GRN3])
+        values (list(list(int))): Values of each sample at each time
+            (in this case [GRN1,GRN2,GRN3])
 
-        metadata (dictionary): 
+        metadata (dictionary):
             Other attributes of the dataset which
             can be numerical or non-numerical
             (in this case: sensillum (non-numerical),
@@ -26,4 +27,3 @@ class Timeseries:
         self.time_indices = time_indices
         self.values = values
         self.metadata = metadata
-

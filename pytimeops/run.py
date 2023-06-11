@@ -1,17 +1,21 @@
-import pandas as pd
+#import pandas as pd
 import pytimeops as pto
 import sys
 
 # define command line arguments
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("-v", "--verbose", help="Turn on verbose messages", action="store_true", default=False)
-parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in", default=None)
- 
+parser.add_argument("-v", "--verbose", help="Turn on verbose messages",
+                    action="store_true", default=False)
+parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in",
+                    default=None)
+
+
 def main(inputCSV, verbose=False):
     """
     This main function performs the workflow:
-    1. takes the csv file input from the command line and reads it into the Timeseries, 
+    1. takes the csv file input from the command line
+       and reads it into the Timeseries,
     2. ...
 
     Args:
@@ -29,6 +33,7 @@ def main(inputCSV, verbose=False):
 
     # Step 2....
 
+
 if __name__ == "__main__":
     """
     example usage:
@@ -45,4 +50,3 @@ if __name__ == "__main__":
         sys.exit("FATAL: not giving a csv formatted input file")
 
     main(inputfile, verbose=verbose)
-
