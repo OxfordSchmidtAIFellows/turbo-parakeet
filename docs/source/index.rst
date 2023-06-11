@@ -23,6 +23,7 @@ Contents
 .. toctree::
 
    time_series
+   read_data
    
 
 
