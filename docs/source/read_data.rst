@@ -2,9 +2,9 @@
 Read in data
 ************
 
-.. currentmodule:: pytimeops
+.. currentmodule:: pytimeops.read_data
 
-:function:`read_file<pytimeops.read_file>` is a functin to read in a csv file and process it into a list of `Timeseries` objects.
+:func:`read_file<pytimeops.read_file>` is a function to read in a csv file and process it into a list of `Timeseries` objects.
 
 Example::
 
@@ -13,7 +13,7 @@ Example::
 
 Overview:
 
-- :function:`read_file`
+- :func:`read_file`
 
 .. autofunction:: read_file
 

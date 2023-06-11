@@ -13,9 +13,6 @@ Welcome to the turbo-parakeet documentation!
 Contents
 ========
 
-.. automodule:: pytimeops
-    :members:
-
 .. toctree::
    time_series
    read_data
