@@ -14,7 +14,7 @@ release = '0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc','sphinx.ext.viewcode','sphinx.ext.napoleon']
+extensions = ['sphinx.ext.autodoc','sphinx.ext.viewcode','sphinx.ext.napoleon','sphinx.etx.coverage']
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -28,9 +28,11 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 #sys.path.insert(0, os.path.dirname(os.getcwd()))
-import sys,os
-sys.path.insert(0, os.path.abspath('../../'))
-sys.path.insert(1, os.path.abspath('../../pytimeops'))
-sys.path.insert(2, os.path.abspath('../../Data'))
+#import sys,os
+#sys.path.insert(0, os.path.abspath('../../'))
+#sys.path.insert(1, os.path.abspath('../../pytimeops'))
+#sys.path.insert(2, os.path.abspath('../../Data'))
 
-
+import pathlib
+import sys
+sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
