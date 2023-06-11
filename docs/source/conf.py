@@ -26,3 +26,10 @@ exclude_patterns = []
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+
+#sys.path.insert(0, os.path.dirname(os.getcwd()))
+import sys,os
+sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(1, os.path.abspath('../../'))
+
+
