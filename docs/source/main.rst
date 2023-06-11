@@ -1,7 +1,0 @@
-****
-Main
-****
-
-.. automodule:: pytimeops.main
-
-

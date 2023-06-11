@@ -7,7 +7,12 @@ def main(inputCSV, verbose=False):
     This main function performs the workflow:
     1. takes the csv file input from the command line and reads it into the Timeseries, 
     2. ...
-    Additional debugging printouts if verbose=True
+
+    Args:
+        inputCSV (str): of full path to .csv input file
+        verbose (bool): Additional debugging printouts if True
+    Returns:
+        void
     """
     # Step 1: read in csv file to Timeseries format
     list_1 = pto.read_file(inputCSV, 4, 10)
@@ -21,7 +26,7 @@ def main(inputCSV, verbose=False):
 if __name__ == "__main__":
     """
     example usage:
-    $ python pytimeops/read_data.py -i Data/Fig1H-K_SI1G-I.csv -v
+    $ python pytimeops/run.py -i Data/Fig1H-K_SI1G-I.csv -v
     """
     import argparse
     parser = argparse.ArgumentParser()

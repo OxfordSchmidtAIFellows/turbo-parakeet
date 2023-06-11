@@ -14,11 +14,7 @@ Contents
 ========
 
 .. toctree::
-   main
-   time_series
    read_data
-   
-
-
-
+   time_series
+   run
 

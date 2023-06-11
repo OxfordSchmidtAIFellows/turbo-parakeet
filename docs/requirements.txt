@@ -1,5 +1,6 @@
 Sphinx
 sphinxcontrib-napoleon
 sphinx-rtd-theme
+sphinx-argparse
 numpy
 pandas
