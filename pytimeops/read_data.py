@@ -1,6 +1,6 @@
 import pandas as pd
 import pytimeops as pto
-
+import sys
 
 def read_file(filename, Num_md, Num_b):
     """
@@ -17,8 +17,36 @@ def read_file(filename, Num_md, Num_b):
     return list_y
 
 
-#list_1 = read_file('../Data/Fig1H-K_SI1G-I.csv', 4, 10)
+def main(inputCSV, verbose=False):
+    """
+    This main function takes the csv file input from the command line and reads it into the Timeseries, with additional debugging printouts if verbose=True.
+    """
+    # read in csv file to Timeseries format
+    list_1 = read_file(inputCSV, 4, 10)
 
-'#print([ts.metadata for ts in list_1])'
-'#print([ts.values for ts in list_1])'
-'#print(hasattr(pytimeops, read_file))'
+    if verbose:
+        print([ts.metadata for ts in list_1])
+        print([ts.values for ts in list_1])
+
+if __name__ == "__main__":
+    """
+    example usage:
+    $ python pytimeops/read_data.py -i Data/Fig1H-K_SI1G-I.csv -v
+    """
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", help="Turn on verbose messages", action="store_true", default=False)
+    parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in", default=None)
+ 
+    args = parser.parse_args()
+    verbose = args.verbose
+    inputfile = args.inputCSV
+
+    # check input file is sensible
+    if not inputfile:
+        sys.exit("FATAL: not giving an input file, add an '-i' argument")
+    elif ".csv" not in inputfile:
+        sys.exit("FATAL: not giving a csv formatted input file")
+
+    main(inputfile, verbose=verbose)
+
