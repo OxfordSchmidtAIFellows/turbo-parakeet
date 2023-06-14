@@ -9,11 +9,10 @@ parser.add_argument("-v", "--verbose", help="Turn on verbose messages",
                     action="store_true", default=False)
 parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in",
                     default=None)
-parser.add_argument("-c", "--comments", help="Comments on dataset to add to metadata",
+parser.add_argument("-c", "--comments", help="Comments on dataset for metadata",
                     default="")
-parser.add_argument("-t", "--time_interval", help="[ms] time interval between measurements, default binwidth",
-                    default=None)
-
+parser.add_argument("-t", "--time_interval", 
+                    help="[ms] time interval / binwidth", default=None)
 
 
 def main(inputCSV, time_interval, comments, verbose=False):
@@ -36,7 +35,8 @@ def main(inputCSV, time_interval, comments, verbose=False):
 
     if verbose:
         dataset.print()
-        for ts in dataset.dataset: ts.print()
+        for ts in dataset.dataset:
+            ts.print()
 
     # Step 2....
 
@@ -58,6 +58,6 @@ if __name__ == "__main__":
     elif ".csv" not in inputfile:
         sys.exit("FATAL: not giving a csv formatted input file")
     elif not time_interval:
-        sys.exit("FATAL: not giving a time interval for the measurements, add a -t argument in [ms]")
+        sys.exit("FATAL: not giving a time interval, add a -t argument in [ms]")
 
     main(inputfile, time_interval, comments, verbose=verbose)

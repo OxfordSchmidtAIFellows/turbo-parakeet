@@ -1,9 +1,10 @@
 class Dataset:
-    """Class to represent a dataset made of multiple instances of Timeseries data.
+    """Class to represent a dataset made of multiple Timeseries.
 
     Attributes:
         dataset (list(Timeseries)): list of the Timeseries datasets
-        metadata (dict): global metadata about the dataset including e.g. time_interval [ms], filename and comments.
+        metadata (dict): global metadata about the dataset including
+            e.g. time_interval [ms], filename and comments.
 
     """
     def __init__(self, dataset, metadata):
@@ -13,7 +14,8 @@ class Dataset:
 
         dataset (list(Timeseries)): list of the Timeseries datasets
 
-        metadata (dict): global metadata about the dataset including e.g. time_interval [ms], filename and comments.
+        metadata (dict): global metadata about the dataset including
+            e.g. time_interval [ms], filename and comments.
 
         """
         self.dataset = dataset
@@ -24,5 +26,5 @@ class Dataset:
         The function prints out the Dataset
         """
         print("Global Metadata: ",self.metadata)
-        for i in range(0,len(self.dataset)):
-            print(i,self.dataset[i])
+        for i in range(0, len(self.dataset)):
+            print(i, self.dataset[i])
