@@ -4,21 +4,21 @@ import pytimeops as pto
 
 def read_file(filename, Num_md, Num_b):
     """
-    This function gets the .csv file, and returns lists.
+    This function gets the .csv file, and returns lists of Timeseries objects
+
+    Args:
+        filename (str): input csv file path
+        Num_md (int): number of types of metadata
+        Num_b (int): number of bins
+    Returns:
+        list of Timeseries objects
     """
 
     df = pd.read_csv(filename)
-    t = range(Num_b)
+    time_indices = range(Num_b)
     list_y = []
     for i, row in df.iterrows():
-        V = row[Num_md+1:].values
-        MD = dict(row[1:Num_md+1])
-        list_y.append(pto.Timeseries(t, V, MD))
+        values = row[Num_md+1:].values
+        metadata = dict(row[1:Num_md+1])
+        list_y.append(pto.Timeseries(time_indices, values, metadata))
     return list_y
-
-
-list_1 = read_file('Data/Fig1H-K_SI1G-I.csv', 4, 10)
-
-'#print([ts.metadata for ts in list_1])'
-'#print([ts.values for ts in list_1])'
-'#print(hasattr(pytimeops, read_file))'
