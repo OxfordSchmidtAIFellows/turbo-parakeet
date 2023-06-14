@@ -12,11 +12,11 @@ class TestTimeSeries(unittest.TestCase):
         t_interval = 100  # ms
         ts = pto.Timeseries(t_indices, values, metadata, channels, t_interval)
 
-        self.assertEqual(time_indices, ts.time_indices)
+        self.assertEqual(t_indices, ts.time_indices)
         self.assertEqual(values, ts.values)
         self.assertEqual(metadata, ts.metadata)
         self.assertEqual(channels, ts.channels)
-        self.assertEqual(time_interval, ts.time_interval)
+        self.assertEqual(t_interval, ts.time_interval)
 
 
 if __name__ == '__main__':
