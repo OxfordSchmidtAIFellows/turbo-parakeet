@@ -8,8 +8,7 @@ Timeseries
 
 Example::
 
-    ts = pytimeops.Timeseries(t=[1,2,3], v=[10,100,105], md={"sensillum": "s1", "sugar": "fruc", "GRN": "GRN1"})
-
+    ts = pytimeops.Timeseries(time_indices = [1,2,3], values = [[10,100,105],[2,4,5]], metadata = {"sensillum": "s1", "sugar": "fruc"}, channels = ["GRN1","GRN2"], time_interval = 100)
 
 Overview:
 
@@ -17,3 +16,4 @@ Overview:
 
 .. autoclass:: Timeseries
 
+   .. method:: print()

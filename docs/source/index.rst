@@ -16,5 +16,6 @@ Contents
 .. toctree::
    read_data
    time_series
+   dataset
    run
 
