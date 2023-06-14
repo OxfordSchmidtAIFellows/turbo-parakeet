@@ -28,7 +28,7 @@ def read_file(filename, time_interval, comments="", channel_title="GRN"):
 
     # list the different kinds of measurement channels in the dataset
     global_metadata['channels'] = df[channel_title].unique()
-    num_channels = df[channel_title].nunique() # count the number of channels
+    num_channels = df[channel_title].nunique()  # count the number of channels
 
     # find columns containing experiment metadata (before the channels one)
     channel_index = df.columns.get_loc(channel_title)

@@ -11,7 +11,7 @@ parser.add_argument("-i", "--inputCSV",
                     help="Path to csv file to read in", default=None)
 parser.add_argument("-c", "--comments",
                     help="Comments on dataset for metadata", default="")
-parser.add_argument("-t", "--time_interval", 
+parser.add_argument("-t", "--time_interval",
                     help="[ms] time interval / binwidth", default=None)
 
 
