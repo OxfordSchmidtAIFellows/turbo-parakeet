@@ -18,18 +18,19 @@ def read_file(filename, time_interval, comments="", channel_title="GRN"):
 
     df = pd.read_csv(filename)
     totcolumns = len(df.columns)
+    fname = filename.replace('.csv', '').replace('Data/', '')
 
     # set global metadata for dataset
     global_metadata = {}
-    global_metadata['filename'] = filename.replace('.csv', '').replace('Data/', '')
+    global_metadata['filename'] = fname
     global_metadata['comments'] = comments
     global_metadata['time interval'] = time_interval
 
-    # list the different kinds of measurement channels in the dataset 
+    # list the different kinds of measurement channels in the dataset
     global_metadata['channels'] = df[channel_title].unique()
-    num_channels = df[channel_title].nunique() # count the number of channels  
+    num_channels = df[channel_title].nunique() # count the number of channels
 
-    # find which columns contain the experiment metadata (before the channels one)
+    # find columns containing experiment metadata (before the channels one)
     channel_index = df.columns.get_loc(channel_title)
     finalmd_index = channel_index-1
 

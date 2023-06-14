@@ -25,6 +25,6 @@ class Dataset:
         """
         The function prints out the Dataset
         """
-        print("Global Metadata: ",self.metadata)
+        print("Global Metadata: ", self.metadata)
         for i in range(0, len(self.dataset)):
             print(i, self.dataset[i])

@@ -5,12 +5,12 @@ import sys
 # define command line arguments
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("-v", "--verbose", help="Turn on verbose messages",
-                    action="store_true", default=False)
-parser.add_argument("-i", "--inputCSV", help="Path to csv file to read in",
-                    default=None)
-parser.add_argument("-c", "--comments", help="Comments on dataset for metadata",
-                    default="")
+parser.add_argument("-v", "--verbose",
+                    help="verbose output", action="store_true", default=False)
+parser.add_argument("-i", "--inputCSV",
+                    help="Path to csv file to read in", default=None)
+parser.add_argument("-c", "--comments",
+                    help="Comments on dataset for metadata", default="")
 parser.add_argument("-t", "--time_interval", 
                     help="[ms] time interval / binwidth", default=None)
 
@@ -58,6 +58,6 @@ if __name__ == "__main__":
     elif ".csv" not in inputfile:
         sys.exit("FATAL: not giving a csv formatted input file")
     elif not time_interval:
-        sys.exit("FATAL: not giving a time interval, add a -t argument in [ms]")
+        sys.exit("FATAL: not giving a time interval, add a -t argument [ms]")
 
     main(inputfile, time_interval, comments, verbose=verbose)

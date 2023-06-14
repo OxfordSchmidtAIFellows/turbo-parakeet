@@ -39,15 +39,13 @@ class Timeseries:
         self.channels = channels
         self.time_interval = time_interval
 
-
     def print(self):
         """
         The function prints out the Timeseries
         """
-        print("Metadata: ",self.metadata)
+        print("Metadata: ", self.metadata)
         print("Time interval [ms]: ", self.time_interval)
         print("t index, t [ms], ", self.channels)
-        for i in range(0,len(self.time_indices)):
-            print(self.time_indices[i],
-                  self.times[i],
+        for i in range(0, len(self.time_indices)):
+            print(self.time_indices[i], self.times[i],
                   [self.values[j][i] for j in range(0, len(self.values))])
