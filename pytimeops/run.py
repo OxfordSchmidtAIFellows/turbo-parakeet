@@ -40,6 +40,7 @@ def main(inputCSV, time_interval, comments, verbose=False):
 
     # Step 2....
 
+
 if __name__ == "__main__":
     """
     example usage:
