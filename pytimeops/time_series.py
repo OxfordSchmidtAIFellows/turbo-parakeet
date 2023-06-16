@@ -50,7 +50,6 @@ class Timeseries:
             print(self.time_indices[i], self.times[i],
                   [self.values[j][i] for j in range(0, len(self.values))])
 
-
     def compare_time_indices(self, timeseries):
         """
         Function to compare if two timeseries have the same time_indices
@@ -61,7 +60,8 @@ class Timeseries:
         Returns:
              bool: is timeseries the same
         """
-        return all(x == y for x, y in zip(timeseries.time_indices, self.time_indices))
+        return all(x == y for x, y in
+                   zip(timeseries.time_indices, self.time_indices))
 
     def compare_times(self, timeseries):
         """
@@ -137,8 +137,8 @@ class Timeseries:
              bool: is timeseries the same
         """
         return all([self.compare_time_indices(timeseries),
-                self.compare_times(timeseries),
-                self.compare_values(timeseries),
-                self.compare_metadata(timeseries),
-                self.compare_channels(timeseries),
-                self.compare_time_interval(timeseries)])
+                    self.compare_times(timeseries),
+                    self.compare_values(timeseries),
+                    self.compare_metadata(timeseries),
+                    self.compare_channels(timeseries),
+                    self.compare_time_interval(timeseries)])

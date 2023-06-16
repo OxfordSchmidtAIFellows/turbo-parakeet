@@ -37,7 +37,7 @@ class Dataset:
              timeseries (Timeseries): timeseries to check.
 
         Returns:
-             bool: is timeseries present 
+             bool: is timeseries present
         """
         for ts in self.dataset:
             if ts.compare(timeseries):
@@ -61,4 +61,3 @@ class Dataset:
             print("Timeseries not in Dataset")
         else:
             self.dataset.remove(Timeseries)
-
