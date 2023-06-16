@@ -60,11 +60,11 @@ class Timeseries:
         # First check if the new width is an integer multiple of the old one
         if ((new_tinterval % self.time_interval != 0) or
             (self.time_interval*len(self.times) % new_tinterval != 0)):
-            raise Exception("Sorry, the new binning won't work, "
-                            "pick an int. multiple of ",
-                            self.time_interval,
-                            "and a divider of ",
-                            self.time_interval*len(self.times))
+                raise Exception("Sorry, the new binning won't work, "
+                                "pick an int. multiple of ",
+                                self.time_interval,
+                                "and a divider of ",
+                                self.time_interval*len(self.times))
 
         # Find the Scale Factor for how much fatter the new bins are
         sf = int(new_tinterval/self.time_interval)
@@ -79,7 +79,6 @@ class Timeseries:
                 tmp_value[j] += self.values[j][i]
             if ((i+1) % sf) == 0:
                 new_times.append(self.times[i-1])
-                tmp_time = 0.
                 for j in range(0, num_values):
                     new_values[j].append(tmp_value[j])
                     tmp_value[j] = 0
