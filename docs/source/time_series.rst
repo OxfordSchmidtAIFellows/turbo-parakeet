@@ -17,3 +17,17 @@ Overview:
 .. autoclass:: Timeseries
 
    .. method:: print()
+
+   .. method:: compare_time_indices(timeseries)
+
+   .. method:: compare_times(timeseries)
+
+   .. method:: compare_values(timeseries)
+
+   .. method:: compare_metadata(timeseries)
+
+   .. method:: compare_channels(timeseries)
+
+   .. method:: compare_time_interval(timeseries)
+
+   .. method:: compare(timeseries)

@@ -23,8 +23,42 @@ class Dataset:
 
     def print(self):
         """
-        The function prints out the Dataset
+        This function prints out the Dataset
         """
         print("Global Metadata: ", self.metadata)
         for i in range(0, len(self.dataset)):
             print(i, self.dataset[i])
+
+    def check_timeseries(self, timeseries):
+        """
+        Function to check if a timeseries is already in the dataset
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries present 
+        """
+        for ts in self.dataset:
+            if ts.compare(timeseries):
+                return True
+        return False
+
+    def add_timeseries(self, Timeseries):
+        """
+        This function adds an extra timeseries to the dataset
+        """
+        if self.checkTimeseries(Timeseries):
+            print("Timeseries already in Dataset")
+        else:
+            self.dataset.append(Timeseries)
+
+    def del_timeseries(self, Timeseries):
+        """
+        This function deletes a timeseries from the dataset
+        """
+        if not self.checkTimeseries(Timeseries):
+            print("Timeseries not in Dataset")
+        else:
+            self.dataset.remove(Timeseries)
+

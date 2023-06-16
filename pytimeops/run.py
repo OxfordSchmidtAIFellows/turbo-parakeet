@@ -31,7 +31,7 @@ def main(inputCSV, time_interval, comments, verbose=False):
         void
     """
     # Step 1: read in csv file toi Dataset of Timeseries format
-    dataset = pto.read_file(inputCSV, 4, 10, time_interval, comments)
+    dataset = pto.read_file(inputCSV, time_interval, comments)
 
     if verbose:
         dataset.print()

@@ -49,3 +49,96 @@ class Timeseries:
         for i in range(0, len(self.time_indices)):
             print(self.time_indices[i], self.times[i],
                   [self.values[j][i] for j in range(0, len(self.values))])
+
+
+    def compare_time_indices(self, timeseries):
+        """
+        Function to compare if two timeseries have the same time_indices
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        return all(x == y for x, y in zip(timeseries.time_indices, self.time_indices))
+
+    def compare_times(self, timeseries):
+        """
+        Function to compare if two timeseries have the same times
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        return all(x == y for x, y in zip(timeseries.times, self.times))
+
+    def compare_values(self, timeseries):
+        """
+        Function to compare if two timeseries have the same values
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        for ts, s in zip(timeseries.values, self.values):
+            if not all(x == y for x, y in zip(ts, s)):
+                return False
+        return True
+
+    def compare_metadata(self, timeseries):
+        """
+        Function to compare if two timeseries have the same metadata
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        return timeseries.metadata == self.metadata
+
+    def compare_channels(self, timeseries):
+        """
+        Function to compare if two timeseries have the same channels
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        return all(x == y for x, y in zip(timeseries.channels, self.channels))
+
+    def compare_time_interval(self, timeseries):
+        """
+        Function to compare if two timeseries have the same time interval
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        return timeseries.time_interval == self.time_interval
+
+    def compare(self, timeseries):
+        """
+        Function to compare if two timeseries are the same
+
+        Args:
+             timeseries (Timeseries): timeseries to check.
+
+        Returns:
+             bool: is timeseries the same
+        """
+        return all([self.compare_time_indices(timeseries),
+                self.compare_times(timeseries),
+                self.compare_values(timeseries),
+                self.compare_metadata(timeseries),
+                self.compare_channels(timeseries),
+                self.compare_time_interval(timeseries)])

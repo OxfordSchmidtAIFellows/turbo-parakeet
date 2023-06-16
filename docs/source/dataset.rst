@@ -18,3 +18,9 @@ Overview:
 .. autoclass:: Dataset
 
    .. method:: print()
+
+   .. method:: check_timeseries()
+
+   .. method:: add_timeseries()
+
+   .. method:: del_timeseries()
