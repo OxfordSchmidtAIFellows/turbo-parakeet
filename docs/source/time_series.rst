@@ -18,6 +18,8 @@ Overview:
 
    .. method:: print()
 
+   .. method:: rebin(new_tinterval)
+
    .. method:: compare_time_indices(timeseries)
 
    .. method:: compare_times(timeseries)

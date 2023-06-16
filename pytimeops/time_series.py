@@ -41,7 +41,7 @@ class Timeseries:
 
     def print(self):
         """
-        The function prints out the Timeseries
+        Function to print out the Timeseries
         """
         print("Metadata: ", self.metadata)
         print("Time interval [ms]: ", self.time_interval)
@@ -49,6 +49,45 @@ class Timeseries:
         for i in range(0, len(self.time_indices)):
             print(self.time_indices[i], self.times[i],
                   [self.values[j][i] for j in range(0, len(self.values))])
+
+    def rebin(self, new_tinterval):
+        """
+        Function to rebin the time series to be coarser.
+
+        Args:
+             new_tinterval (float): new time interval / bin width [ms].
+        """
+        # First check if the new width is an integer multiple of the old one
+        if (new_tinterval % self.time_interval != 0):
+            raise Exception("Sorry, the new binning won't work,
+                            pick an int. multiple of ",self.time_interval)
+
+        # Find the Scale Factor for how much fatter the new bins are
+        sf = int(new_tinterval/self.time_interval)
+
+        # Loop over current bins to rebin
+        new_times = []
+        new_values = []
+        tmp_time = 0.
+        num_values = len(self.values)
+        tmp_value = [0]*num_values
+        for i in range(0,len(self.times)):
+            tmp_time += self.times[i]
+            for j in range(0,num_values):
+                tmp_value[j] += self.values[j][i]
+            if (i % sf) == 0:
+                new_times.append(tmp_time)
+                new_values.append(tmp_value)
+                tmp_time = 0.
+                for j in range(0,num_values):
+                    tmp_value[j] = 0
+        new_time_indices = [x for range(0,len(new_times))]
+
+        # put into Timeinterval
+        self.times = new_times
+        self.time_indices = new_time_indices
+        self.time_interval = new_tinterval
+        self.values = new_values
 
     def compare_time_indices(self, timeseries):
         """

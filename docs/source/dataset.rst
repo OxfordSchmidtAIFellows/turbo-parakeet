@@ -19,6 +19,8 @@ Overview:
 
    .. method:: print()
 
+   .. method:: rebin(new_tinterval)
+
    .. method:: check_timeseries()
 
    .. method:: add_timeseries()

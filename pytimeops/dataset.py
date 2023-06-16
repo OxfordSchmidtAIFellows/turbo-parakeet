@@ -61,3 +61,14 @@ class Dataset:
             print("Timeseries not in Dataset")
         else:
             self.dataset.remove(Timeseries)
+
+    def rebin(self, new_tinterval):
+        """
+        Function to rebin the time series to be coarser.
+
+        Args:
+             new_tinterval (float): new time interval / bin width [ms].
+        """
+        for ts in self.dataset:
+            ts.rebin(new_tinterval)
+        self.metadata["time interval"] = new_tinterval
