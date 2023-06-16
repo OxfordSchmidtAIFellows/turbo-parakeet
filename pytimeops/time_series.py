@@ -81,7 +81,7 @@ class Timeseries:
                 tmp_time = 0.
                 for j in range(0,num_values):
                     tmp_value[j] = 0
-        new_time_indices = [x for range(0,len(new_times))]
+        new_time_indices = list(range(len(new_times)))
 
         # put into Timeinterval
         self.times = new_times
