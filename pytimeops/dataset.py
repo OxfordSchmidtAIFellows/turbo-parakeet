@@ -86,4 +86,4 @@ class Dataset:
         for i, ts in enumerate(self.dataset):
             if ts.metadata[key] in allowed_values:
                 new_dataset.append(ts)
-        self.dataset = new_dataset
+        self.dataset = new_dataset    
