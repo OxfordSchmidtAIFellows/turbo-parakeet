@@ -21,6 +21,21 @@ class Dataset:
         self.dataset = dataset
         self.metadata = metadata
 
+    def filter(self, key, allowed_values):
+        """
+        Parameters
+        ----------
+        key
+            key for the time series metadata
+        allowed_values : list
+            Allowed values for that key
+        """
+        new_dataset = []
+        for i, ts in enumerate(self.dataset):
+            if ts.metadata[key] in allowed_values:
+                new_dataset.append(ts)
+        self.dataset = new_dataset
+
     def print(self):
         """
         This function prints out the Dataset
