@@ -16,5 +16,6 @@ class TestReadData(unittest.TestCase):
             self.assertIsInstance(timeseries, pto.Timeseries)
             self.assertEqual(timeseries.time_interval, 10)
 
+
 if __name__ == '__main__':
     unittest.main()
