@@ -20,15 +20,12 @@ def cluster_each_group(filename, feature, method):
     for group_name, group_df in grouped:
         #print(f"Processing group: {group_name}")
         group_data = group_df.iloc[:, -5:].values
-
-        
         # Apply K-means clustering
         result = pto.apply_clustering(group_data, 10, method)
-        
         # Create a new DataFrame to store the group name and centroid
-        group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]], 'centroid': [result[1:]]})
+        group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]], 
+                                           'centroid': [result[1:]]})
         centroids_df = centroids_df.append(group_centroids_df, ignore_index=True)
-        
         # Append the group centroids to the main centroids DataFrame
         #group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values, 3)
         #print(group_centroids)
