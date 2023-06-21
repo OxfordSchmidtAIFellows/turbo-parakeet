@@ -1,5 +1,5 @@
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='pytimeops',
@@ -14,4 +14,5 @@ setup(
             'flake8>=3',
         ],
     },
+    packages=find_packages(exclude=("Data")),
 )
