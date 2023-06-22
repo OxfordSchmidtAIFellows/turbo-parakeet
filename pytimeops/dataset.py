@@ -1,3 +1,9 @@
+import pandas as pd
+from collections import defaultdict
+import numpy as np
+import pytimeops as pto
+import matplotlib.pyplot as plt
+
 class Dataset:
     """Class to represent a dataset made of multiple Timeseries.
 
@@ -72,3 +78,40 @@ class Dataset:
         for ts in self.dataset:
             ts.rebin(new_tinterval)
         self.metadata["time interval"] = new_tinterval
+
+    def cluster_each_group(self, features, method, grn_idx):
+        """
+        This function gets the dataset and the feature that you want
+        to group based on that, applies clustering on each group
+        and returns centroids of clusters.
+        """
+        
+        # Initialize an empty DataFrame to store the centroids
+        centroids_df = pd.DataFrame(columns=['group', 'Number', 'centroid'])
+        
+
+
+        #df_selected_columns = df.iloc[:, [feature] + list(range(5, 15))]
+        #grouped = df_selected_columns.groupby(df_selected_columns.columns[0])
+
+        grouped = defaultdict(list)
+        for ts in self.dataset:
+            ts_feature = "_".join([ts.metadata[feature] for feature in features])
+            grouped[ts_feature].append(ts)
+
+        for group_name, group_list in grouped.items():
+            #print(f"Processing group: {group_name}")
+            group_data = [ts.values[grn_idx] for ts in group_list]
+            group_data = np.asarray(group_data)
+
+            # Apply K-means clustering
+            result = pto.apply_clustering(group_data, 10, method)
+            # Create a new DataFrame to store the group name and centroid
+            group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]], 
+                                            'centroid': [result[1:]]})
+            centroids_df = pd.concat([centroids_df, group_centroids_df])
+            # Append the group centroids to the main centroids DataFrame
+            #group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values, 3)
+            #print(group_centroids)
+            #group_centroids = 10
+        return centroids_df
