@@ -1,6 +1,6 @@
 import pandas as pd
 import pytimeops as pto
-
+import copy
 
 def read_file(filename, time_interval, comments="", channel_title="GRN"):
     """
@@ -27,7 +27,7 @@ def read_file(filename, time_interval, comments="", channel_title="GRN"):
     global_metadata['time interval'] = time_interval
 
     # list the different kinds of measurement channels in the dataset
-    global_metadata['channels'] = df[channel_title].unique()
+    global_metadata['channels'] = df[channel_title].unique().tolist()
     num_channels = df[channel_title].nunique()  # count the number of channels
 
     # find columns containing experiment metadata (before the channels one)
@@ -50,7 +50,7 @@ def read_file(filename, time_interval, comments="", channel_title="GRN"):
                     time_indices,
                     values_allchannels,
                     metadata,
-                    global_metadata['channels'],
+                    global_metadata['channels'].copy(),
                     float(time_interval)
                 )
             )
