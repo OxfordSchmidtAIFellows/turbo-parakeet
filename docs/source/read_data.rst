@@ -8,8 +8,7 @@ Read in data
 
 Example::
 
-    result = pytimeops.read_file('data.csv', 4, 10)
-
+    result = pytimeops.read_file('data.csv', 50, comments = "23/06/23 Honeybees", channel_title = "GRN")
 
 Overview:
 
