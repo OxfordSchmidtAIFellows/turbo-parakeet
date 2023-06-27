@@ -170,3 +170,19 @@ class Dataset:
             self.metadata['channels'].remove(channel)
         else:
             raise Exception("channel "+channel+" not in the dataset")
+
+    def filter(self, key, allowed_values):
+        """
+        Function to remove timeseries if a particular metadata isn't in a set
+        of allowed values
+
+        Args:
+            key (str): key for the time series metadata item to filter
+            allowed_values (list): Allowed values for that key
+        """
+        new_dataset = []
+        for ts in self.dataset:
+            if ts.get_metadata_attribute(key) in allowed_values:
+                new_dataset.append(ts)
+        self.dataset = new_dataset
+
