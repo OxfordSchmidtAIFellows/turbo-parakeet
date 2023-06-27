@@ -110,9 +110,8 @@ class Dataset:
             # find the values of the remove_matches metadata for our bad
             # control ts. i.e. what are the beeID and sensillum
             remove_vars = {}
-            for match_var in remove_matches:
-                remove_vars[match_var] = 
-                    control.get_metadata_attribute(match_var)
+            for var in remove_matches:
+                remove_vars[var] = control.get_metadata_attribute(var)
             # find the other recordings for that beeID and sensillum, remove
             for ts in self.dataset:
                 if (ts.is_match(remove_vars)):

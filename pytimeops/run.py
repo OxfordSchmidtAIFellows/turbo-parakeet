@@ -60,8 +60,8 @@ def main(inputCSV, time_interval, comments, verbose=False):
 
     # Step 2. Clean bad recordings
     print("Step 2")
-    dataset.clean( {"sugar": "sucr", "concentration":"100mM"},
-                  ["BeeID","sensillum"], verbose=verbose)
+    dataset.clean({"sugar": "sucr", "concentration": "100mM"},
+                    ["BeeID", "sensillum"], verbose=verbose)
     # remove the GRN3
     dataset.remove_channel("GRN3")
 
@@ -77,6 +77,7 @@ def main(inputCSV, time_interval, comments, verbose=False):
     dataset_40ms.print(2)
     dataset_100ms.print(2)
     dataset.print(2)
+
 
 if __name__ == "__main__":
     """

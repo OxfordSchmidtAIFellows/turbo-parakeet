@@ -1,5 +1,6 @@
 import statistics
 
+
 class Timeseries:
     """Class to represent Timeseries data
 
@@ -75,7 +76,8 @@ class Timeseries:
         new_times = []
         num_values = len(self.values)
         new_values = []
-        for i in range(0,num_values): new_values.append([])
+        for i in range(0, num_values):
+            new_values.append([])
         tmp_value = [0]*num_values
         for i in range(0, len(self.times)):
             for j in range(0, num_values):
@@ -195,7 +197,7 @@ class Timeseries:
              bool: is timeseries bad
         """
         for response in self.values:
-            channelbad = all(x==0 for x in response)
+            channelbad = all(x == 0 for x in response)
             if not channelbad:
                 return False
         return True
@@ -237,7 +239,7 @@ class Timeseries:
 
     def mean(self):
         """
-        Function to tell you the mean response for each channel in a time series.
+        Function to tell you the mean response for each channel in timeseries.
 
         Returns:
             list(float) mean of timeseries channels
@@ -258,4 +260,3 @@ class Timeseries:
             print("The channel isn't present in the timeseries!")
         self.channels.pop(index)
         self.values.pop(index)
-
