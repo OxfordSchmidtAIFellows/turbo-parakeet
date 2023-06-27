@@ -105,7 +105,7 @@ class Dataset:
             group_data = np.asarray(group_data)
 
             # Apply K-means clustering
-            result = pto.apply_clustering(group_data, 10, method)
+            result = pto.apply_clustering(group_data, 15, method)
             # Create a new DataFrame to store the group name and centroid
             group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]], 
                                             'centroid': [result[1:]]})
