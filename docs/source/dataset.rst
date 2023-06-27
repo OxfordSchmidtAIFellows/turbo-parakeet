@@ -26,3 +26,26 @@ Overview:
    .. method:: add_timeseries()
 
    .. method:: del_timeseries()
+
+   .. method:: print(nrows=-1)
+
+   .. method:: check_timeseries(timeseries)
+
+   .. method:: add_timeseries(Timeseries)
+
+   .. method:: del_timeseries(Timeseries)
+
+   .. method:: rebin(new_tinterval)
+
+   .. method:: clean(control_settings, remove_matches, verbose=False)
+
+   .. method:: get_channels(self)
+
+   .. method:: list_types_in_metadata_attribute(attribute)
+
+   .. method:: mean(self)
+
+   .. method:: remove_channel(channel)
+
+   .. method:: filter(key, allowed_values)
+
