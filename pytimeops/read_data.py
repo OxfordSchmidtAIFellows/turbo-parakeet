@@ -1,6 +1,6 @@
 import pandas as pd
 import pytimeops as pto
-import copy
+
 
 def read_file(filename, time_interval, comments="", channel_title="GRN"):
     """

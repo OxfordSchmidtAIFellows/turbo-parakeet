@@ -1,5 +1,6 @@
 import statistics
 
+
 class Dataset:
     """Class to represent a dataset made of multiple Timeseries.
 
@@ -32,7 +33,8 @@ class Dataset:
         """
         print("Global Metadata: ", self.metadata)
         maxrows = len(self.dataset)
-        if nrows != -1: maxrows = nrows
+        if nrows != -1:
+            maxrows = nrows
         for i in range(0, maxrows):
             print(i)
             self.dataset[i].print()
@@ -91,25 +93,27 @@ class Dataset:
                 used as the control, where we want to test for all 0s.
                 e.g. stim=sucr, conc=100
             remove_matches [dict]: the metadata for what matching data we want
-                to remove if the control is zero, e.g. the same beeID and sensillum
+                to remove if the control=0s, e.g. the same beeID & sensillum
             verbose [bool]: more verbose printouts
         """
         # Find the empty recordings in the control category
         empty_controls = []
         for ts in self.dataset:
-            if (ts.is_match(control_settings) and ts.is_empty()): 
+            if (ts.is_match(control_settings) and ts.is_empty()):
                 empty_controls.append(ts)
         # Clean the data of recordings matching the bad controls
         if verbose:
             print("These controls are empty: ")
-            for ec in empty_controls: ec.print()
+            for ec in empty_controls:
+                ec.print()
         for control in empty_controls:
-            # find the values of the remove_matches metadata for our bad control ts
-            # i.e. what are the beeID and sensillum
+            # find the values of the remove_matches metadata for our bad
+            # control ts. i.e. what are the beeID and sensillum
             remove_vars = {}
             for match_var in remove_matches:
-                remove_vars[match_var] = control.get_metadata_attribute(match_var)
-            # find the other recordings for that beeID and sensillum and remove them
+                remove_vars[match_var] = 
+                    control.get_metadata_attribute(match_var)
+            # find the other recordings for that beeID and sensillum, remove
             for ts in self.dataset:
                 if (ts.is_match(remove_vars)):
                     if verbose:
@@ -141,7 +145,8 @@ class Dataset:
         types = []
         for ts in self.dataset:
             md = ts.get_metadata_attribute(attribute)
-            if not md in types: types.append(md)
+            if md not in types:
+                types.append(md)
         return types
 
     def mean(self):
@@ -185,4 +190,3 @@ class Dataset:
             if ts.get_metadata_attribute(key) in allowed_values:
                 new_dataset.append(ts)
         self.dataset = new_dataset
-
