@@ -20,8 +20,10 @@ def main(inputCSV, time_interval, comments, verbose=False):
     """
     This main function performs the workflow:
     1. takes the csv file input from the command line
-       and reads it into the Timeseries,
-    2. ...
+       and reads it into the dataset/Timeseries format.
+       print out some properties to sanity check
+    2. cleans bad recordings / removes un-needed channels
+    3. produces some versions with different binning
 
     Args:
         inputCSV (str): of full path to .csv input file
