@@ -34,24 +34,6 @@ Overview:
 
    .. method:: compare(timeseries)
 
-   .. method:: print(self)
-
-   .. method:: rebin(new_tinterval)
-
-   .. method:: compare_time_indices(timeseries)
-
-   .. method:: compare_times(timeseries)
-
-   .. method:: compare_values(timeseries)
-
-   .. method:: compare_metadata(timeseries)
-
-   .. method:: compare_channels(timeseries)
-
-   .. method:: compare_time_interval(timeseries)
-
-   .. method:: compare(timeseries)
-
    .. method:: is_empty(self)
 
    .. method:: get_metadata_attribute(attribute)

@@ -17,16 +17,6 @@ Overview:
 
 .. autoclass:: Dataset
 
-   .. method:: print()
-
-   .. method:: rebin(new_tinterval)
-
-   .. method:: check_timeseries()
-
-   .. method:: add_timeseries()
-
-   .. method:: del_timeseries()
-
    .. method:: print(nrows=-1)
 
    .. method:: check_timeseries(timeseries)
