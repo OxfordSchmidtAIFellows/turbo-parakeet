@@ -72,3 +72,18 @@ class Dataset:
         for ts in self.dataset:
             ts.rebin(new_tinterval)
         self.metadata["time interval"] = new_tinterval
+
+    def filter(self, key, allowed_values):
+        """
+        Parameters
+        ----------
+        key
+            key for the time series metadata
+        allowed_values : list
+            Allowed values for that key
+        """
+        new_dataset = []
+        for i, ts in enumerate(self.dataset):
+            if ts.metadata[key] in allowed_values:
+                new_dataset.append(ts)
+        self.dataset = new_dataset
