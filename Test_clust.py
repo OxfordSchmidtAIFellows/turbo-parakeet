@@ -1,16 +1,17 @@
 import pytimeops as pto
 import matplotlib.pyplot as plt
 
-Dataset =  pto.read_file('Data/Fig1H-K_SI1G-I.csv', 100)
-#A = cluster_each_group('Fig1H-K_SI1G-I.csv', 2, 'silhouette')
-A = Dataset.cluster_each_group(['sugar', 'concentration'], 'silhouette', grn_idx = 0)
-#print(B[0][1][:])
+Dataset = pto.read_file('Data/Fig1H-K_SI1G-I.csv', 100)
+# A = cluster_each_group('Fig1H-K_SI1G-I.csv', 2, 'silhouette')
+A = Dataset.cluster_each_group(['sugar', 'concentration'], 'silhouette',
+                               grn_idx=0)
+# print(B[0][1][:])
 r = 0
 c = 0
 fig, axs = plt.subplots(2, 2)
-#fig.subplots_adjust(bottom=0.85)
-for j in range(17,21):
-    B  = A.iloc[j]['centroid']
+# fig.subplots_adjust(bottom=0.85)
+for j in range(17, 21):
+    B = A.iloc[j]['centroid']
 
     for i in range(A.iloc[j]['Number']):
 
