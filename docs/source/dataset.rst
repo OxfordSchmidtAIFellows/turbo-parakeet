@@ -17,12 +17,25 @@ Overview:
 
 .. autoclass:: Dataset
 
-   .. method:: print()
+   .. method:: print(nrows=-1)
+
+   .. method:: check_timeseries(timeseries)
+
+   .. method:: add_timeseries(Timeseries)
+
+   .. method:: del_timeseries(Timeseries)
 
    .. method:: rebin(new_tinterval)
 
-   .. method:: check_timeseries()
+   .. method:: clean(control_settings, remove_matches, verbose=False)
 
-   .. method:: add_timeseries()
+   .. method:: get_channels(self)
 
-   .. method:: del_timeseries()
+   .. method:: list_types_in_metadata_attribute(attribute)
+
+   .. method:: mean(self)
+
+   .. method:: remove_channel(channel)
+
+   .. method:: filter(key, allowed_values)
+

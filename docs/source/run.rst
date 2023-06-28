@@ -9,8 +9,7 @@ Run
 
 Example::
 
-    result = pytimeops.main('data.csv', False)
-
+    result = pytimeops.main('input.csv', 20, "a note about the metadata", verbose=False)
 
 Overview:
 
