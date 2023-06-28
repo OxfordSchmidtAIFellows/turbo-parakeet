@@ -113,3 +113,18 @@ class Dataset:
             # print(group_centroids)
             # group_centroids = 10
         return centroids_df
+
+    def filter(self, key, allowed_values):
+        """
+        Parameters
+        ----------
+        key
+            key for the time series metadata
+        allowed_values : list
+            Allowed values for that key
+        """
+        new_dataset = []
+        for i, ts in enumerate(self.dataset):
+            if ts.metadata[key] in allowed_values:
+                new_dataset.append(ts)
+        self.dataset = new_dataset
