@@ -2,7 +2,7 @@ import pandas as pd
 from collections import defaultdict
 import numpy as np
 import pytimeops as pto
-import matplotlib.pyplot as plt
+
 
 class Dataset:
     """Class to represent a dataset made of multiple Timeseries.
@@ -85,14 +85,12 @@ class Dataset:
         to group based on that, applies clustering on each group
         and returns centroids of clusters.
         """
-        
+
         # Initialize an empty DataFrame to store the centroids
         centroids_df = pd.DataFrame(columns=['group', 'Number', 'centroid'])
-        
 
-
-        #df_selected_columns = df.iloc[:, [feature] + list(range(5, 15))]
-        #grouped = df_selected_columns.groupby(df_selected_columns.columns[0])
+        # df_selected_columns = df.iloc[:, [feature] + list(range(5, 15))]
+        # grouped = df_selected_columns.groupby(df_selected_columns.columns[0])
 
         grouped = defaultdict(list)
         for ts in self.dataset:
@@ -107,11 +105,11 @@ class Dataset:
             # Apply K-means clustering
             result = pto.apply_clustering(group_data, 15, method)
             # Create a new DataFrame to store the group name and centroid
-            group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]], 
-                                            'centroid': [result[1:]]})
+            group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]],
+                                               'centroid': [result[1:]]})
             centroids_df = pd.concat([centroids_df, group_centroids_df])
             # Append the group centroids to the main centroids DataFrame
-            #group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values, 3)
-            #print(group_centroids)
-            #group_centroids = 10
+            # group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values, 3)
+            # print(group_centroids)
+            # group_centroids = 10
         return centroids_df
