@@ -17,7 +17,7 @@ for j in range(17,21):
         axs[r, c].plot(B[0][i][:], label=f'Cluster {i+1}')
         axs[r, c].set_title(A.iloc[j]['group'])
         axs[r, c].legend(loc='upper right')
-        
+
     c = c + 1
     if c == 2:
         axs[r, c-2].set_ylabel('Spikes/sec')
