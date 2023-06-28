@@ -111,7 +111,7 @@ class Dataset:
             centroids_df = pd.concat([centroids_df, group_centroids_df])
             # Append the group centroids to the main centroids DataFrame
             # group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values,
-                                                        3)
+                                                     3)
             # print(group_centroids)
             # group_centroids = 10
         return centroids_df
