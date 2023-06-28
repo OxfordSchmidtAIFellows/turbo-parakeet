@@ -94,7 +94,7 @@ class Dataset:
 
         grouped = defaultdict(list)
         for ts in self.dataset:
-            ts_feature = "_".join([ts.metadata[feature] for feature in features])
+            ts_feature = "_".join([ts.metadata[feat] for feat in features])
             grouped[ts_feature].append(ts)
 
         for group_name, group_list in grouped.items():
@@ -105,11 +105,13 @@ class Dataset:
             # Apply K-means clustering
             result = pto.apply_clustering(group_data, 15, method)
             # Create a new DataFrame to store the group name and centroid
-            group_centroids_df = pd.DataFrame({'group': [group_name], 'Number':[result[0]],
+            group_centroids_df = pd.DataFrame({'group': [group_name],
+                                               'Number': [result[0]],
                                                'centroid': [result[1:]]})
             centroids_df = pd.concat([centroids_df, group_centroids_df])
             # Append the group centroids to the main centroids DataFrame
-            # group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values, 3)
+            # group_centroids = pto.apply_clustering(group_data.iloc[:, -5:].values,
+                                                        3)
             # print(group_centroids)
             # group_centroids = 10
         return centroids_df
