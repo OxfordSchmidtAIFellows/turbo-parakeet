@@ -7,7 +7,7 @@ class Timeseries:
     Attributes:
         time_indices (list(int)): time indices for each data point.
         times (list(float)): times for each data point [ms].
-        values (list(list(int))): sensilla valies for each time.
+        values (list(list(int))):  response data for each time and channel.
         metadata (dict): metadata, other dataset attributes.
         channels (list(str)): names of each measurement channel: neurons here
         time_interval (float): binwidth / time between measurements [ms]
@@ -27,10 +27,10 @@ class Timeseries:
         metadata (dictionary):
             Other attributes of the dataset which
             can be numerical or non-numerical
-            (in this case: sensillum (non-numerical),
+            (e.g.: sensillum (non-numerical),
             sugar(non-numerical), Concentration (numerical))
 
-        channels (list(str)): names of each measurement channel: neurons here
+        channels (list(str)): names of each measurement channel (e.g. neurons)
 
         time_interval (float): binwidth = time between measurements [ms]
 
