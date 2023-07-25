@@ -2,8 +2,8 @@ import pandas as pd
 import pytimeops as pto
 
 
-def read_file(filename, time_interval, comments="", channel_title="GRN", \
-        nrows=-1):
+def read_file(filename, time_interval, comments="", channel_title="GRN",
+              nrows=-1):
     """
     This function gets the .csv file, and returns lists of Timeseries objects
 

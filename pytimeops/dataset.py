@@ -226,8 +226,8 @@ class Dataset:
         for i, times in enumerate(time_indices):
             values = []
             for j in range(0, len(channels)):
-                values.append([match_dataset.dataset[k].values[j][i] \
-                        for k in range(0,len(match_dataset.dataset))])
+                values.append([match_dataset.dataset[k].values[j][i]
+                              for k in range(0, len(match_dataset.dataset))])
                 means_allchannels[j].append(statistics.mean(values[j]))
 
         result = deepcopy(match_dataset.dataset[0])
