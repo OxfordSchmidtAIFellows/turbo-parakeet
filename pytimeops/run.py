@@ -46,9 +46,9 @@ def main(inputCSV, time_interval, comments, verbose=False):
     # print out some properties of the dataset
     beeIDs = dataset.list_types_in_metadata_attribute("BeeID")
     print("how many bees? ", len(beeIDs), ". With these names: ", beeIDs)
-    sensillums = dataset.list_types_in_metadata_attribute("sensillum")
-    print("how many sensilla? ", len(sensillums),
-          ". With these names: ", sensillums)
+    sensilla = dataset.list_types_in_metadata_attribute("sensillum")
+    print("how many sensilla? ", len(sensilla),
+          ". With these names: ", sensilla)
     sugars = dataset.list_types_in_metadata_attribute("sugar")
     print("how many sugars? ", len(sugars), ". With these names: ", sugars)
     concentrations = dataset.list_types_in_metadata_attribute("concentration")
@@ -57,7 +57,7 @@ def main(inputCSV, time_interval, comments, verbose=False):
     channels = dataset.get_channels()
     print("how many channels? ", len(channels),
           ". With these names: ", channels)
-#    means = dataset.mean()
+#    means = dataset.mean_over_time()
 #    print("what are the means of the dataset?", means)
 
     # Step 2. Clean bad recordings
@@ -70,15 +70,31 @@ def main(inputCSV, time_interval, comments, verbose=False):
     # Step 3. Produce some new datasets with different binnings
     # (assuming 20ms file to start with for now)
     print("Step 3")
-    dataset_100ms = deepcopy(dataset)
     dataset_40ms = deepcopy(dataset)
-    dataset_100ms.rebin(100)
     dataset_40ms.rebin(40)
     if verbose:
         print("verbose! printing the dataset:")
-    dataset_40ms.print(2)
-    dataset_100ms.print(2)
-    dataset.print(2)
+        dataset_40ms.print()
+    #    dataset.print()
+
+    # Now lets look at the fructose data, and find the average responses over
+    # beeID/sensillum at each concentration
+    # store these in a dict of dicts for sugars and each conc for each sugar
+    outplotdir = "plots/"
+    means = {}
+    means_40ms = {}
+    for sugar in sugars:
+        means[sugar] = {}
+        means_40ms[sugar] = {}
+        for conc in concentrations:
+            # return a Timeseries object with this const. metadata and the means for each time.
+            means[sugar][conc] = dataset.mean({"sugar": sugar, "concentration": conc})
+            means_40ms[sugar][conc] = dataset_40ms.mean({"sugar": sugar, "concentration": conc})
+            if verbose: means[sugar][conc].print()
+
+
+        pto.plot_firing_rates(dataset, sugar, concentrations, means, outplotdir)
+        pto.plot_firing_rates(dataset_40ms, sugar, concentrations, means_40ms, outplotdir)
 
 
 if __name__ == "__main__":

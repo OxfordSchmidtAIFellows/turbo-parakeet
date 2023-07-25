@@ -1,5 +1,5 @@
 import statistics
-
+from copy import deepcopy
 
 class Dataset:
     """Class to represent a dataset made of multiple Timeseries.
@@ -10,7 +10,7 @@ class Dataset:
             e.g. time_interval [ms], filename and comments.
 
     """
-    def __init__(self, dataset, metadata):
+    def __init__(self, dataset, metadata, times):
         """
         Parameters
         ----------
@@ -20,9 +20,12 @@ class Dataset:
         metadata (dict): global metadata about the dataset including
             e.g. time_interval [ms], filename and comments.
 
+        times (list(float)): list of the times for the Timeseries used [ms]
+
         """
         self.dataset = dataset
         self.metadata = metadata
+        self.times = times
 
     def print(self, nrows=-1):
         """
@@ -32,6 +35,7 @@ class Dataset:
             nrows [int] max number of rows to print
         """
         print("Global Metadata: ", self.metadata)
+        print("times [ms]: ", self.times)
         maxrows = len(self.dataset)
         if nrows != -1:
             maxrows = nrows
@@ -82,6 +86,7 @@ class Dataset:
         for ts in self.dataset:
             ts = ts.rebin(new_tinterval)
         self.metadata["time interval"] = new_tinterval
+        self.times = self.dataset[0].times
 
     def clean(self, control_settings, remove_matches, verbose=False):
         """
@@ -148,7 +153,7 @@ class Dataset:
                 types.append(md)
         return types
 
-    def mean(self):
+    def mean_over_time(self):
         """
         Function to tell you the mean response for each channel in each
         timeseries in the dataset.
@@ -175,17 +180,56 @@ class Dataset:
         else:
             raise Exception("channel "+channel+" not in the dataset")
 
-    def filter(self, key, allowed_values):
+    def filter(self, allowed_mtd):
         """
-        Function to remove timeseries if a particular metadata isn't in a set
-        of allowed values
+        Function to remove timeseries if a particular combination of metadata
+        isn't in a set of allowed values
 
         Args:
-            key (str): key for the time series metadata item to filter
-            allowed_values (list): Allowed values for that key
+            allowed_mtd (dict[list]): metadata items to filter and their allowed
+            values.
+
+        Returns:
+            dataset: with filter applied
         """
-        new_dataset = []
+        new_data = []
         for ts in self.dataset:
-            if ts.get_metadata_attribute(key) in allowed_values:
-                new_dataset.append(ts)
-        self.dataset = new_dataset
+            match = True
+            for key,vals in allowed_mtd.items():
+                if not ts.get_metadata_attribute(key) in vals:
+                    match = False
+            if match == True:
+                new_data.append(ts)
+        if len(new_data)==0:
+            print("WARNING! no data matched the filter")
+        new_dataset = deepcopy(self)
+        new_dataset.dataset = new_data
+        return new_dataset
+
+    def mean(self, mtd_const):
+        """
+        Function to take the average at each time over timeseries with a
+        varying metadata mtd_ave variable and the same mtd_const variables
+
+        Args:
+            mtd_const (dict[str]): metadata common to all the timeseries you
+            want to average over
+
+        Returns:
+            Timeseries with the common metadata and the averaged timeseries
+        """
+        match_dataset = self.filter(mtd_const)
+        time_indices = self.dataset[0].time_indices
+        channels = self.metadata["channels"]
+        means_allchannels = [ [] for c in range(0,len(channels)) ]
+        for i,times in enumerate(time_indices):
+            values = []
+            for j in range(0,len(channels)):
+                values.append([ match_dataset.dataset[k].values[j][i] for k in range(0,len(match_dataset.dataset)) ])
+                means_allchannels[j].append(statistics.mean(values[j]))
+
+        result = deepcopy(match_dataset.dataset[0])
+        result.values = means_allchannels
+        result.metadata = mtd_const
+
+        return result

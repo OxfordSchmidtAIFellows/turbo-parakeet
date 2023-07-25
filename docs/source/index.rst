@@ -17,5 +17,6 @@ Contents
    read_data
    time_series
    dataset
+   plotting
    run
 

@@ -2,7 +2,7 @@ import pandas as pd
 import pytimeops as pto
 
 
-def read_file(filename, time_interval, comments="", channel_title="GRN"):
+def read_file(filename, time_interval, comments="", channel_title="GRN", nrows = -1):
     """
     This function gets the .csv file, and returns lists of Timeseries objects
 
@@ -41,6 +41,7 @@ def read_file(filename, time_interval, comments="", channel_title="GRN"):
 
     values_allchannels = []
     for i, row in df.iterrows():
+        if nrows>0 and not i<(nrows*num_channels): continue
         values = list(map(int, row[channel_index+1:].values))
         values_allchannels.append(values)
         metadata = dict(row[0:finalmd_index+1])
@@ -56,5 +57,7 @@ def read_file(filename, time_interval, comments="", channel_title="GRN"):
             )
             values_allchannels = []
 
-    dataseries = pto.Dataset(timeseries_list, global_metadata)
+    times = [index*float(time_interval) for index in time_indices]
+    dataseries = pto.Dataset(timeseries_list, global_metadata, times)
+
     return dataseries
