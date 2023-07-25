@@ -1,6 +1,7 @@
 import statistics
 from copy import deepcopy
 
+
 class Dataset:
     """Class to represent a dataset made of multiple Timeseries.
 
@@ -186,8 +187,8 @@ class Dataset:
         isn't in a set of allowed values
 
         Args:
-            allowed_mtd (dict[list]): metadata items to filter and their allowed
-            values.
+            allowed_mtd (dict[list]): metadata items to filter and their
+            allowed values.
 
         Returns:
             dataset: with filter applied
@@ -195,12 +196,12 @@ class Dataset:
         new_data = []
         for ts in self.dataset:
             match = True
-            for key,vals in allowed_mtd.items():
+            for key, vals in allowed_mtd.items():
                 if not ts.get_metadata_attribute(key) in vals:
                     match = False
-            if match == True:
+            if match:
                 new_data.append(ts)
-        if len(new_data)==0:
+        if len(new_data) == 0:
             print("WARNING! no data matched the filter")
         new_dataset = deepcopy(self)
         new_dataset.dataset = new_data
@@ -221,11 +222,12 @@ class Dataset:
         match_dataset = self.filter(mtd_const)
         time_indices = self.dataset[0].time_indices
         channels = self.metadata["channels"]
-        means_allchannels = [ [] for c in range(0,len(channels)) ]
-        for i,times in enumerate(time_indices):
+        means_allchannels = [[] for c in range(0, len(channels))]
+        for i, times in enumerate(time_indices):
             values = []
-            for j in range(0,len(channels)):
-                values.append([ match_dataset.dataset[k].values[j][i] for k in range(0,len(match_dataset.dataset)) ])
+            for j in range(0, len(channels)):
+                values.append([match_dataset.dataset[k].values[j][i] \
+                        for k in range(0,len(match_dataset.dataset))])
                 means_allchannels[j].append(statistics.mean(values[j]))
 
         result = deepcopy(match_dataset.dataset[0])

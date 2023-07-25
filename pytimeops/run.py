@@ -87,14 +87,19 @@ def main(inputCSV, time_interval, comments, verbose=False):
         means[sugar] = {}
         means_40ms[sugar] = {}
         for conc in concentrations:
-            # return a Timeseries object with this const. metadata and the means for each time.
-            means[sugar][conc] = dataset.mean({"sugar": sugar, "concentration": conc})
-            means_40ms[sugar][conc] = dataset_40ms.mean({"sugar": sugar, "concentration": conc})
+            # return a Timeseries object with this const. metadata and the
+            # means for each time.
+            means[sugar][conc] = dataset.mean({"sugar": sugar, \
+                    "concentration": conc})
+            means_40ms[sugar][conc] = dataset_40ms.mean({"sugar": sugar, \
+                    "concentration": conc})
             if verbose: means[sugar][conc].print()
 
 
-        pto.plot_firing_rates(dataset, sugar, concentrations, means, outplotdir)
-        pto.plot_firing_rates(dataset_40ms, sugar, concentrations, means_40ms, outplotdir)
+        pto.plot_firing_rates(dataset, sugar, concentrations, \
+                means, outplotdir)
+        pto.plot_firing_rates(dataset_40ms, sugar, concentrations, \
+                means_40ms, outplotdir)
 
 
 if __name__ == "__main__":
