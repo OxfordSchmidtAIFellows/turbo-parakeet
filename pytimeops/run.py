@@ -93,8 +93,8 @@ def main(inputCSV, time_interval, comments, verbose=False):
                                               "concentration": conc})
             means_40ms[sugar][conc] = dataset_40ms.mean({"sugar": sugar,
                                                         "concentration": conc})
-            if verbose: means[sugar][conc].print()
-
+            if verbose:
+                means[sugar][conc].print()
 
         pto.plot_firing_rates(dataset, sugar, concentrations,
                               means, outplotdir)

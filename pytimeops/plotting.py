@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 
 
 def plot_firing_rates(dataset, constvar, comparevar, means, outplotdir,
-                      colmap="tab20", padcoords=[0.08, 0.08], padsize=[0.90, 0.86]):
+                      colmap="tab20", padcoords=[0.08, 0.08],
+                      padsize=[0.90, 0.86]):
     '''
     Function to plot firing rates for a set of data series, each averaged
     in some way. All the channels are plotted. E.g for a constvar=Fruc,
