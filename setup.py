@@ -7,7 +7,8 @@ setup(
     version='0.1',
     install_requires=[
         'numpy',
-        'pandas'
+        'pandas',
+        'matplotlib'
     ],
     extras_require={
         'dev': [
