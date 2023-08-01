@@ -1,10 +1,13 @@
+import statistics
+
+
 class Timeseries:
     """Class to represent Timeseries data
 
     Attributes:
         time_indices (list(int)): time indices for each data point.
         times (list(float)): times for each data point [ms].
-        values (list(list(int))): sensilla valies for each time.
+        values (list(list(int))):  response data for each time and channel.
         metadata (dict): metadata, other dataset attributes.
         channels (list(str)): names of each measurement channel: neurons here
         time_interval (float): binwidth / time between measurements [ms]
@@ -24,10 +27,10 @@ class Timeseries:
         metadata (dictionary):
             Other attributes of the dataset which
             can be numerical or non-numerical
-            (in this case: sensillum (non-numerical),
+            (e.g.: sensillum (non-numerical),
             sugar(non-numerical), Concentration (numerical))
 
-        channels (list(str)): names of each measurement channel: neurons here
+        channels (list(str)): names of each measurement channel (e.g. neurons)
 
         time_interval (float): binwidth = time between measurements [ms]
 
@@ -45,10 +48,10 @@ class Timeseries:
         """
         print("Metadata: ", self.metadata)
         print("Time interval [ms]: ", self.time_interval)
-        print("t index, t [ms], ", self.channels)
-        for i in range(0, len(self.time_indices)):
-            print(self.time_indices[i], self.times[i],
-                  [self.values[j][i] for j in range(0, len(self.values))])
+        print("t indices: ", self.time_indices)
+        print("t [ms]: ", self.times)
+        for i in range(0, len(self.channels)):
+            print(self.channels[i], " : ", self.values[i])
 
     def rebin(self, new_tinterval):
         """
@@ -63,7 +66,7 @@ class Timeseries:
             raise Exception("Sorry, the new binning won't work, "
                             "pick an int. multiple of ",
                             self.time_interval,
-                            "and a divider of ",
+                            " and a divider of ",
                             self.time_interval*len(self.times))
 
         # Find the Scale Factor for how much fatter the new bins are
@@ -71,14 +74,16 @@ class Timeseries:
 
         # Loop over current bins to rebin, keep 'time' as low edge
         new_times = []
-        new_values = [[], [], []]
         num_values = len(self.values)
+        new_values = []
+        for i in range(0, num_values):
+            new_values.append([])
         tmp_value = [0]*num_values
         for i in range(0, len(self.times)):
             for j in range(0, num_values):
                 tmp_value[j] += self.values[j][i]
             if ((i+1) % sf) == 0:
-                new_times.append(self.times[i-1])
+                new_times.append(self.times[i+1-sf])
                 for j in range(0, num_values):
                     new_values[j].append(tmp_value[j])
                     tmp_value[j] = 0
@@ -182,3 +187,76 @@ class Timeseries:
                     self.compare_metadata(timeseries),
                     self.compare_channels(timeseries),
                     self.compare_time_interval(timeseries)])
+
+    def is_empty(self):
+        """
+        Function to check if a timeseries is empty.
+        Defined here as all channels are 0 for all times.
+
+        Returns:
+             bool: is timeseries bad
+        """
+        for response in self.values:
+            channelbad = all(x == 0 for x in response)
+            if not channelbad:
+                return False
+        return True
+
+    def get_metadata_attribute(self, attribute):
+        """
+        Function to return the value of a metadata attribute if it exists
+
+        Args:
+            attribute [str]: the metadata attribute we want to lookup
+
+        Returns:
+            something: value of the metadata
+
+        """
+        md = None
+        try:
+            md = self.metadata[attribute]
+        except KeyError:
+            print("The metadata isn't present in the timeseries!")
+        return md
+
+    def is_match(self, match_vars):
+        """
+        Function to tell you if a timeseries matches a set of metadata reqs.
+
+        Args:
+            match_vars [dict]: the metadata attribute we want to check
+                and the values we want them to have.
+
+        Returns:
+            bool: does it match?
+
+        """
+        for setting, value in match_vars.items():
+            if self.get_metadata_attribute(setting) != value:
+                return False
+        return True
+
+    def mean(self):
+        """
+        Function to tell you the mean response for each channel in timeseries.
+
+        Returns:
+            list(float) mean of timeseries channels
+        """
+        means = [statistics.mean(x) for x in self.values]
+        return means
+
+    def remove_channel(self, channel):
+        """
+        Function to remove reponses for a given channel.
+
+        Args:
+            channel [str]: the name of the channel to remove.
+        """
+        try:
+            index = self.channels.index(channel)
+        except KeyError:
+            print("The channel isn't present in the timeseries!")
+        self.channels.pop(index)
+        self.values.pop(index)

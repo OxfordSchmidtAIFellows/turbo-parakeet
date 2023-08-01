@@ -33,3 +33,14 @@ Overview:
    .. method:: compare_time_interval(timeseries)
 
    .. method:: compare(timeseries)
+
+   .. method:: is_empty(self)
+
+   .. method:: get_metadata_attribute(attribute)
+
+   .. method:: is_match(match_vars)
+
+   .. method:: mean(self)
+
+   .. method:: remove_channel(channel)
+
